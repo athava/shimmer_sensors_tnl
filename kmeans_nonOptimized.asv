@@ -23,9 +23,8 @@ clearvars i j
 %1 = up
 %2 = down
 %3 = left
-% 4 = right
-% and create a matrix (train_labels) with the labels and the centroids of each
-
+4 = right
+and create a matrix with the labels and the centroids of each
 train_labels = ['up' {C_train_set(1,:)}; 'down' {C_train_set(2,:)}; 'left' {C_train_set(3,:)}; 'right' {C_train_set(4,:)}];
 
 if(tr_idx(1,1) == 1)
@@ -86,10 +85,10 @@ else
 end
 
  
-
+ 
  %TEST
  
- %select the data that are left for testing the above classification 
+ 
  for i=1:1:3
     for j=1:1:36
         testset(i,j) = featured_data_up(i+7,j);
@@ -101,8 +100,6 @@ end
 
 clearvars i j
 
-%in matrix "distances" we keep the distances of each observation from all
-%four centroids we have in "train_labels" matrix
 for i=1:1:12
     for j=1:1:4
         temp = [testset(i,:); train_labels{j,2}];
@@ -111,9 +108,6 @@ for i=1:1:12
 end
 clearvars i j
 
-
-%we find where we get to min distance and keep results in "miins_posiition"
-%matrix
 for i= 1:1:12
     mymin = distances(i,1);
     thesi = 1;
@@ -126,7 +120,7 @@ for i= 1:1:12
   miins_position(i,1) = thesi;
 end
 
-%evaluate the results
+
 right_clust=0;
 wrong_clust=0;
 for i= 1:1:12
